@@ -25,7 +25,7 @@ const projects = [
       "A full-stack MERN e-commerce platform for purchasing HDDs and SSDs. Features role-based authentication, shopping cart, admin dashboard, product reviews, and order tracking. Built as part of a Full Stack JavaScript course project.",
     tech: ["MongoDB", "Express.js", "React", "Node.js", "JWT", "Redux", "Bootstrap"],
     link: "https://github.com/Gaurav2213/computer-storage-ecommerce-app",
-    image: "/project/computerECommerce.png",
+    image: "/project/computerEcommerce.png",
   },
   {
     title: "Spotify Clone - Vibrant Media Player",
