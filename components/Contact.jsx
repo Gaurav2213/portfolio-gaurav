@@ -1,96 +1,78 @@
-"use client";
-import React, { useState } from "react";
-const ContactForm = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false);
+'use client';
+import { motion } from 'framer-motion';
 
-  const validateEmail = (email) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
-  };
-
-  const validate = () => {
-    const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required.";
-    if (!formData.email.trim()) newErrors.email = "Email is required.";
-    else if (!validateEmail(formData.email)) newErrors.email = "Enter a valid email.";
-    if (!formData.message.trim()) newErrors.message = "Message is required.";
-    return newErrors;
-  };
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: "" });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-    // Here you can add API call or email logic
-    setSubmitted(true);
-  };
-
+const Contact = () => {
   return (
-    <div className="max-w-xl mx-auto mt-12 p-6 bg-white dark:bg-gray-900 shadow-md rounded">
-      <h2 className="text-2xl font-bold mb-4 text-center">Get In Touch</h2>
-      <p className="text-center text-gray-600 dark:text-gray-300 mb-8">
-        Whether you're hiring, looking to collaborate, or just want to connect, feel free to reach out. I'm always open to meaningful opportunities and great conversations!
-      </p>
-      {submitted ? (
-        <p className="text-green-500 text-center font-semibold">Thank you! I’ll get back to you shortly.</p>
-      ) : (
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Name</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white"
-            />
-            {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
-          </div>
+    <motion.section
+      className="relative py-20 px-6 text-white text-center bg-gray-900 overflow-hidden"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
+    >
+      {/* SVG Pattern Background */}
+      <div className="absolute inset-0 opacity-10 z-0">
+        <svg width="100%" height="100%">
+          <defs>
+            <pattern id="pattern-circles" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+              <circle cx="10" cy="10" r="2" fill="#ffffff" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#pattern-circles)" />
+        </svg>
+      </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Email</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white"
-            />
-            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
-          </div>
+      {/* Main Content */}
+      <div className="relative z-10 max-w-xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">Let’s Connect</h2>
+        <h3 className="text-lg font-semibold">Gaurav Sharma</h3>
+        <p className="text-sm mb-2">📍 Toronto, Canada</p>
+       <p className="text-sm mb-4">
+    📧 <a href="mailto:gauravsharma111199@gmail.com" className="text-blue-400 hover:underline">
+      gauravsharma111199@gmail.com
+    </a>
+  </p>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Message</label>
-            <textarea
-              name="message"
-              rows="4"
-              value={formData.message}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white"
-            ></textarea>
-            {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
-          </div>
-
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors"
+        {/* Icons */}
+        <div className="flex justify-center gap-6 my-4 text-2xl">
+          <motion.a
+            href="https://www.linkedin.com/in/gs-4b39491b9 "
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.95 }}
+            className="text-blue-400"
           >
-            Send Message
-          </button>
-        </form>
-      )}
-    </div>
+            <i className="fab fa-linkedin"></i>
+          </motion.a>
+          <motion.a
+            href="https://github.com/Gaurav2213"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.95 }}
+            className="text-white"
+          >
+            <i className="fab fa-github"></i>
+          </motion.a>
+          <motion.a
+            href="/tech/GauravSharmaSofDev.pdf"
+            download
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.95 }}
+            className="text-green-400"
+          >
+            <i className="fas fa-download"></i>
+          </motion.a>
+        </div>
+
+        {/* Thank You Text */}
+        <p className="text-sm text-gray-300 mt-6 max-w-md mx-auto">
+          Thanks for taking the time to go through my portfolio! If anything here sparks interest or you'd like to discuss ideas, projects, or just connect — I'm always open for a chat.
+        </p>
+      </div>
+    </motion.section>
   );
 };
 
-export default ContactForm;
+export default Contact;
