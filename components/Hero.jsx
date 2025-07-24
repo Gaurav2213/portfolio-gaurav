@@ -5,15 +5,17 @@ export default function Hero() {
   return (
     <section className="min-h-screen flex flex-col md:flex-row justify-center items-center gap-12 px-6 py-20 bg-gradient-to-b from-white to-slate-100">
       {/* Profile Image */}
-      <div className="w-40= h-40 md:w-60 md:h-60 relative rounded-full overflow-hidden shadow-lg border-4 border-blue-600">
-        <Image
-          src={profilePic}
-          alt="Gaurav Sharma"
-          layout="fill"
-          objectFit="cover"
-          priority
-        />
-      </div>
+    <div className="relative rounded-full overflow-hidden shadow-lg border-4 border-blue-600 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 mx-auto">
+  <Image
+    src={profilePic}
+    alt="Gaurav Sharma"
+    width={160}
+    height={160}
+    className="object-cover"
+    priority
+  />
+</div>
+
 
       {/* Text */}
       <div className="text-center md:text-left max-w-xl">
