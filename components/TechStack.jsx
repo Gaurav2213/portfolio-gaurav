@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   FaReact, FaJava, FaDocker, FaAws, FaNodeJs, FaHtml5,
   FaCss3Alt, FaPython, FaGitAlt, FaLinux
@@ -27,7 +27,16 @@ const techIcons = [
 
 export default function TechStack() {
   const [showAll, setShowAll] = useState(false);
-  const displayedIcons = showAll ? techIcons : techIcons.slice(0, 6);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => setIsMobile(window.innerWidth < 768);
+    checkScreen();
+    window.addEventListener('resize', checkScreen);
+    return () => window.removeEventListener('resize', checkScreen);
+  }, []);
+
+  const displayedIcons = isMobile && !showAll ? techIcons.slice(0, 6) : techIcons;
 
   return (
     <section
@@ -36,7 +45,7 @@ export default function TechStack() {
       style={{ background: 'linear-gradient(135deg, #f5f8ff 0%, #e8f0ff 100%)' }}
     >
       <h2 className="text-3xl font-bold text-[#0038a8] mb-10">Tech Stack</h2>
-      
+
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-x-8 gap-8 place-items-center">
         {displayedIcons.map((tech, index) => (
           <div
@@ -54,13 +63,15 @@ export default function TechStack() {
         ))}
       </div>
 
-      {/* Toggle Button */}
-      <button
-        className="mt-8 text-blue-700 font-medium underline hover:text-blue-500 transition"
-        onClick={() => setShowAll(!showAll)}
-      >
-        {showAll ? 'View Less' : 'View More'}
-      </button>
+      {/* View More/Less - only on mobile */}
+      {isMobile && (
+        <button
+          className="mt-8 text-blue-700 font-medium underline hover:text-blue-500 transition"
+          onClick={() => setShowAll(!showAll)}
+        >
+          {showAll ? 'View Less' : 'View More'}
+        </button>
+      )}
     </section>
   );
 }
