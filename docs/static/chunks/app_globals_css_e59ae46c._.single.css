@@ -306,6 +306,14 @@ img, video {
   --tw-backdrop-sepia: ;
 }
 
+.visible {
+  visibility: visible;
+}
+
+.static {
+  position: static;
+}
+
 .fixed {
   position: fixed;
 }
@@ -411,6 +419,10 @@ img, video {
   margin-top: auto;
 }
 
+.mt-1 {
+  margin-top: .25rem;
+}
+
 .block {
   display: block;
 }
@@ -435,8 +447,8 @@ img, video {
   height: 5rem;
 }
 
-.h-24 {
-  height: 6rem;
+.h-32 {
+  height: 8rem;
 }
 
 .h-4 {
@@ -445,10 +457,6 @@ img, video {
 
 .h-48 {
   height: 12rem;
-}
-
-.h-32 {
-  height: 8rem;
 }
 
 .min-h-screen {
@@ -463,16 +471,12 @@ img, video {
   width: 5rem;
 }
 
-.w-24 {
-  width: 6rem;
+.w-32 {
+  width: 8rem;
 }
 
 .w-4 {
   width: 1rem;
-}
-
-.w-32 {
-  width: 8rem;
 }
 
 .max-w-4xl {
@@ -533,10 +537,6 @@ img, video {
 
 .gap-10 {
   gap: 2.5rem;
-}
-
-.gap-12 {
-  gap: 3rem;
 }
 
 .gap-2 {
@@ -694,17 +694,17 @@ img, video {
   object-fit: contain;
 }
 
-.object-cover {
-  -o-object-fit: cover;
-  object-fit: cover;
-}
-
 .p-4 {
   padding: 1rem;
 }
 
 .p-6 {
   padding: 1.5rem;
+}
+
+.px-2 {
+  padding-left: .5rem;
+  padding-right: .5rem;
 }
 
 .px-3 {
@@ -1079,16 +1079,8 @@ a {
 }
 
 @media (min-width: 640px) {
-  .sm\:h-32 {
-    height: 8rem;
-  }
-
   .sm\:h-40 {
     height: 10rem;
-  }
-
-  .sm\:w-32 {
-    width: 8rem;
   }
 
   .sm\:w-40 {
@@ -1098,9 +1090,38 @@ a {
   .sm\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  .sm\:px-0 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .sm\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .sm\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .sm\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .sm\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
 }
 
 @media (min-width: 768px) {
+  .md\:mt-0 {
+    margin-top: 0;
+  }
+
   .md\:flex {
     display: flex;
   }
@@ -1109,16 +1130,8 @@ a {
     display: none;
   }
 
-  .md\:h-40 {
-    height: 10rem;
-  }
-
   .md\:h-52 {
     height: 13rem;
-  }
-
-  .md\:w-40 {
-    width: 10rem;
   }
 
   .md\:w-52 {
@@ -1139,6 +1152,14 @@ a {
 
   .md\:justify-start {
     justify-content: flex-start;
+  }
+
+  .md\:gap-12 {
+    gap: 3rem;
+  }
+
+  .md\:gap-2 {
+    gap: .5rem;
   }
 
   .md\:text-left {
